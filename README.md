@@ -21,11 +21,11 @@
 # 研究经验
 
 关于AMD CPPC的理解：
+  - ![](https://github.com/Yukiriri/win-amd-optimize/blob/main/res/CPPC.png?raw=true)
+
   - 英特尔的第一个核心是最高倍频，然后从第二个核心开始递减，直到后面所有核心的倍频都一致。
   - 而AMD CPPC核心列表所表示的是体质排序，开头2个核心是体质最好的核心，也就是广泛称呼的金银核心，向后则递减，默认全核都为同一个倍频上限，想要挖掘出金银核心的上限就得自己去超频。
   - 但好玩的来了，Windows对这个CPPC顺序的识别过于逆天，把金银核心当成了大小核当中的大核，默认使用就出现了上面图片当中有2个核心占用很高。至于为什么是逻辑核心交替牙齿状占用，应该也要背锅给Windows无法正确调度物理核心与超线程的负载。这对AMD是相当恶劣的负优化。
-
-  - ![](https://github.com/Yukiriri/win-amd-optimize/blob/main/res/CPPC.png?raw=true)
 
   - 能不关闭CPPC就不关闭，以我的实验结论是：关闭CPPC后帧的画面延迟会变低，但动态模糊出现了不正确
 
