@@ -15,6 +15,8 @@
 |Zen5|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
 |Zen5c|大小核|研究ing|
 
+目前修改的电源方案：平衡、高性能、卓越性能
+
 # 研究经验
 
 关于AMD CPPC的理解：<br/>
