@@ -16,6 +16,7 @@ for %%i in (%scheme%) do (
     echo.
 )
 
+bcdedit /deletevalue useplatformclock >nul
 bcdedit /set useplatformclock false
 
 pause
