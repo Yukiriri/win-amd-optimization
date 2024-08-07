@@ -8,15 +8,15 @@
 
 |Zen架构|大小核类型|使用选择|
 |:-|:-|:-|
-|Zen/Zen+|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
-|Zen2|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen3|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen4|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen/Zen+|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
+|Zen2|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen3|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen4|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen5|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
 |Zen5c|大小核|研究ing|
 
 目前修改的电源方案：平衡、高性能、卓越性能<br/>
-如果想要开启常用隐藏选项，可以导入仓库中的<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a>
+如果想要开启常用隐藏选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a>
 
 # 研究经验
 
@@ -38,8 +38,8 @@
 
 # 学习参考
 
-- <a target="_blank" href="https://blog.csdn.net/u011617151/article/details/140035903">https://blog.csdn.net/u011617151/article/details/140035903</a>
-- <a target="_blank" href="https://seeizo.com/posts/amd-win-fix/">https://seeizo.com/posts/amd-win-fix/</a>
+- <a href="https://blog.csdn.net/u011617151/article/details/140035903">https://blog.csdn.net/u011617151/article/details/140035903</a>
+- <a href="https://seeizo.com/posts/amd-win-fix/">https://seeizo.com/posts/amd-win-fix/</a>
 
 # 无用的感慨
 
