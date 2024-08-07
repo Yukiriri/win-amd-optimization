@@ -16,7 +16,7 @@
 |Zen5c|大小核|研究ing|
 
 目前修改的电源方案：平衡、高性能、卓越性能<br/>
-如果想要开启常用隐藏选项，你可以导入仓库中的<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a>
+如果想要开启常用隐藏选项，可以导入仓库中的<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a>
 
 # 研究经验
 关于AMD CPPC的理解：<br/>
