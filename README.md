@@ -38,9 +38,8 @@
 
 # 学习参考
 
-https://blog.csdn.net/u011617151/article/details/140035903
-
-https://seeizo.com/posts/amd-win-fix/
+<a target="_blank" href="https://blog.csdn.net/u011617151/article/details/140035903">https://blog.csdn.net/u011617151/article/details/140035903</a>
+<a target="_blank" href="https://seeizo.com/posts/amd-win-fix/">https://seeizo.com/posts/amd-win-fix/</a>
 
 # 无用的感慨
 
