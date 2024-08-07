@@ -15,10 +15,10 @@
 |Zen5|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
 |Zen5c|大小核|研究ing|
 
-目前修改的电源方案：平衡、高性能、卓越性能
+目前修改的电源方案：平衡、高性能、卓越性能<br/>
+如果想要开启常用隐藏选项，你可以导入仓库中的<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a>
 
 # 研究经验
-
 关于AMD CPPC的理解：<br/>
   - 英特尔的第一个核心是最高倍频，然后从第二个核心开始递减，直到后面所有核心的倍频都一致。
   - 而AMD CPPC核心列表所表示的是体质排序，开头2个核心是体质最好的核心，也就是广泛称呼的金银核心，向后则递减，默认全核都为同一个倍频上限，想要挖掘出金银核心的上限就得自己去超频。
