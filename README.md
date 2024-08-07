@@ -6,7 +6,7 @@
 
 ![](https://github.com/Yukiriri/win-amd-optimize/blob/main/res/result.png?raw=true)
 
-|Zen架构|大小核|使用选择|
+|Zen架构|大小核类型|使用选择|
 |:-|:-|:-|
 |Zen/Zen+|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
 |Zen2|全大核|<a target="_blank" href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
