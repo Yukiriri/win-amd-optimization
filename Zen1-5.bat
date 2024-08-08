@@ -16,7 +16,7 @@ for %%i in (%scheme%) do (
     echo.
 )
 
+reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power /v EventProcessorEnabled /t REG_DWORD /d 0 /f
 bcdedit /deletevalue useplatformclock >nul
-bcdedit /set useplatformclock false
 
 pause
