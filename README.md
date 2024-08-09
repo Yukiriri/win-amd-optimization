@@ -8,18 +8,18 @@
 
 本预设开发所用环境是Windows11 23H2，你也应当安装最新或次新版Windows<br/>
 
-|Zen架构|大小核类型|方案选择|
-|:-|:-|:-|
-|Zen/Zen+|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
-|Zen2|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen3|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen4|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5c|大小核|咕咕咕？？？|
+|Zen架构|型号参考|大小核类型|方案选择|
+|:-|:-|:-|:-|
+|Zen/Zen+|Ryzen 1xxx-2xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
+|Zen2|Ryzen 3xxx-4xxx, 7x2x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen3|Ryzen 5xxx-6xxx, 7x3x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen4|Ryzen 7xxx-8xxx, 7x4x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen5|Ryzen 9xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen5c|咕咕咕？？？|大小核|咕咕咕？？？|
 
 |方案|电源计划|调度类型|
 |:-|:-|:-|
-|Zen1-5.bat|平衡|优先物理核心，超线程默认休眠|
+|Zen1-5.bat|平衡|优先物理核心，默认休眠超线程|
 |Zen1-5.bat|高性能|全核全部分配|
 |Zen1-5.bat|卓越性能|全核全部分配|
 |Zen5c.bat|咕咕咕！！！|咕咕咕！！！|
