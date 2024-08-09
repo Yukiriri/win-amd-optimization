@@ -1,20 +1,26 @@
 @echo off & chcp 65001 >nul
 
 rem 电源计划：平衡、高性能、卓越性能
-set scheme=381b4222-f694-41f0-9685-ff5bb260df2e 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c e9a42b02-d5df-448d-aa00-03f14749eb61
-
-rem 处理器电源管理
-set sub_group=54533251-82be-4824-96c1-47b60b740d00
-
-for %%i in (%scheme%) do (
-    powercfg -setacvalueindex %%i %sub_group% 7f2f5cfa-f10c-4823-b5e1-e93ae85f46b5 4
-    echo %%i生效的异类策略 设置完成
-    powercfg -setacvalueindex %%i %sub_group% 93b8b6dc-0698-4d1c-9ee4-0644e900c85d 0
-    echo %%i异类线程调度策略 设置完成
-    powercfg -setacvalueindex %%i %sub_group% bae08b81-2d5e-4688-ad6a-13243356654b 0
-    echo %%i异类短运行线程调度策略 设置完成
+for %%i in (SCHEME_BALANCED SCHEME_MIN SCHEME_MAX) do (
+    powercfg -setacvalueindex %%i SUB_PROCESSOR HETEROPOLICY 4
+    echo %%i 生效的异类策略=使用异类策略4
+    powercfg -setacvalueindex %%i SUB_PROCESSOR SCHEDPOLICY 0
+    echo %%i 异类线程调度策略=所有处理器
+    powercfg -setacvalueindex %%i SUB_PROCESSOR SHORTSCHEDPOLICY 0
+    echo %%i 异类短运行线程调度策略=所有处理器
+    powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR SMTUNPARKPOLICY 2
+    echo SCHEME_BALANCED SMT线程启动策略=循环配置
     echo.
 )
+powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPMINCORES 50
+echo SCHEME_BALANCED 处理器性能核心放置最小核心数量=50%%
+powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPHEADROOM 50
+echo SCHEME_BALANCED 处理器性能内核休止并发空间阈值=50%%
+powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPDECREASEPOL 1
+echo SCHEME_BALANCED 处理器性能核心放置减小策略=单一核心
+powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPINCREASEPOL 1
+echo SCHEME_BALANCED 处理器性能核心放置增加策略=单一核心
+echo.
 
 reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power /v EventProcessorEnabled /t REG_DWORD /d 0 /f
 bcdedit /deletevalue useplatformclock >nul
