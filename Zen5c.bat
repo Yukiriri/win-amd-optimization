@@ -1,7 +1,7 @@
 @echo off & chcp 65001 >nul
 
 rem 电源计划：平衡、高性能、卓越性能
-for %%i in (SCHEME_BALANCED SCHEME_MIN SCHEME_MAX) do (
+for %%i in (SCHEME_BALANCED SCHEME_MIN e9a42b02-d5df-448d-aa00-03f14749eb61) do (
     powercfg -setacvalueindex %%i SUB_PROCESSOR HETEROPOLICY 0
     echo %%i 生效的异类策略=使用异类策略0
     powercfg -setacvalueindex %%i SUB_PROCESSOR SCHEDPOLICY 2
