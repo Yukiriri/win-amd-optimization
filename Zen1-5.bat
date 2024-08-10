@@ -8,8 +8,8 @@ for %%i in (SCHEME_BALANCED SCHEME_MIN SCHEME_MAX) do (
     echo %%i 异类线程调度策略=所有处理器
     powercfg -setacvalueindex %%i SUB_PROCESSOR SHORTSCHEDPOLICY 0
     echo %%i 异类短运行线程调度策略=所有处理器
-    powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR SMTUNPARKPOLICY 2
-    echo SCHEME_BALANCED SMT线程启动策略=循环配置
+    powercfg -setacvalueindex %%i SUB_PROCESSOR SMTUNPARKPOLICY 2
+    echo %%i SMT线程启动策略=循环配置
     echo.
 )
 powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPMINCORES 50
