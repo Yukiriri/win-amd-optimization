@@ -4,17 +4,17 @@
 
 </div>
 
-![](https://github.com/Yukiriri/win-amd-optimize/blob/main/res/result.png?raw=true)
+![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/result.png?raw=true)
 
 本预设开发所用环境是Windows11 23H2，你也应当安装最新或次新版Windows<br/>
 
 |Zen架构|型号参考|大小核类型|方案选择|
 |:-|:-|:-|:-|
-|Zen/Zen+|Ryzen 1xxx-2xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
-|Zen2|Ryzen 3xxx-4xxx, 7x2x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen3|Ryzen 5xxx-6xxx, 7x3x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen4|Ryzen 7xxx-8xxx, 7x4x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5|Ryzen 9xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen/Zen+|Ryzen 1xxx-2xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
+|Zen2|Ryzen 3xxx-4xxx, 7x2x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen3|Ryzen 5xxx-6xxx, 7x3x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen4|Ryzen 7xxx-8xxx, 7x4x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
+|Zen5|Ryzen 9xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
 |Zen5c|咕咕咕？？？|大小核|咕咕咕？？？|
 
 |方案|电源计划|调度类型|
@@ -24,12 +24,12 @@
 |Zen1-5.bat|卓越性能|全核全部分配|
 |Zen5c.bat|咕咕咕！！！|咕咕咕！！！|
 
-如果想要开启常用隐藏选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimize/blob/main/UnlockSetting.reg">UnlockSetting.reg</a><br/>
+如果想要开启常用隐藏选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSetting.reg">UnlockSetting.reg</a><br/>
 
 # 研究经验
 
 关于AMD CPPC的理解：
-  - ![](https://github.com/Yukiriri/win-amd-optimize/blob/main/res/CPPC.png?raw=true)
+  - ![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/CPPC.png?raw=true)
 
   - 英特尔的第一个核心是最高倍频，然后从第二个核心开始递减，直到后面所有核心的倍频都一致。
   - 而AMD CPPC核心列表所表示的是体质排序，开头2个核心是体质最好的核心，也就是广泛称呼的金银核心，向后则递减，默认全核都为同一个倍频上限，想要挖掘出金银核心的上限就得自己去超频。
