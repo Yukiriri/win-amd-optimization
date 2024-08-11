@@ -4,7 +4,7 @@
 
 </div>
 
-![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/result.png?raw=true)
+![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_drawing.png?raw=true)
 
 本预设开发所用环境是Windows11 23H2，你也应当安装最新或次新版Windows<br/>
 
