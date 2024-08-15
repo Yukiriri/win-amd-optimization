@@ -19,7 +19,8 @@
 </table>
 
 已修改电源计划：平衡 高性能 卓越性能<br/><br/>
-如果想要开启常用隐藏选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSetting.reg">UnlockSetting.reg</a><br/>
+如果想修改SMT的休眠，可以使用<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/SMT%20Hibernate%20On.bat">SMT Hibernate On.bat</a> <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/SMT%20Hibernate%20Off.bat">SMT Hibernate Off.bat</a><br/>
+如果想解锁常用隐藏电源选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSetting.reg">UnlockSetting.reg</a><br/>
 
 # 研究经验
 
