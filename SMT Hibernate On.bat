@@ -12,16 +12,16 @@ for %%i in (SCHEME_BALANCED SCHEME_MIN e9a42b02-d5df-448d-aa00-03f14749eb61) do 
     echo [%%i][Processor performance core parking concurrency threshold]=98%%
     powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPDECREASEPOL 1
     echo [%%i][处理器性能核心放置减小策略]=单一核心
-    echo [%%i][Processor performance core parking decrease policy]=单一核心
+    echo [%%i][Processor performance core parking decrease policy]=Single core
     powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR CPINCREASEPOL 1
     echo [%%i][处理器性能核心放置增加策略]=单一核心
-    echo [%%i][Processor performance core parking increase policy]=单一核心
+    echo [%%i][Processor performance core parking increase policy]=Single core
     powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR PERFCHECK 30
     echo [%%i][处理器性能时间检查间隔]=30ms
     echo [%%i][Processor performance time check interval]=30ms
     powercfg -setacvalueindex SCHEME_BALANCED SUB_PROCESSOR SMTUNPARKPOLICY 2
     echo [%%i][SMT线程启动策略]=循环配置
-    echo [%%i][Smt threads unpark policy]=循环配置
+    echo [%%i][Smt threads unpark policy]=Round robin
     echo.
 )
 
