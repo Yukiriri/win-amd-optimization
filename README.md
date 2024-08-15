@@ -8,22 +8,17 @@
 
 本预设开发所用环境是Windows11 23H2，你也应当安装最新或次新版Windows<br/>
 
-|Zen架构|型号参考|大小核类型|方案选择|
-|:-|:-|:-|:-|
-|Zen/Zen+|Ryzen 1xxx-2xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat</a>|
-|Zen2|Ryzen 3xxx-4xxx, 7x2x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen3|Ryzen 5xxx-6xxx, 7x3x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen4|Ryzen 7xxx-8xxx, 7x4x|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5|Ryzen 9xxx|全大核|<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/Zen1-5.bat">Zen1-5.bat|
-|Zen5c|咕咕咕？？？|大小核|咕咕咕？？？|
+<table>
+  <tr><th>Zen架构</th><th>型号参考</th><th>大小核类型</th><th>方案选择</th></tr>
+  <tr><td>Zen/Zen+</td><td>Ryzen 1xxx-2xxx</td><td rowspan="5">全大核</td><td rowspan="5"><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Only.bat">P Only.bat</a></td></tr>
+  <tr><td>Zen2</td><td>Ryzen 3xxx-4xxx, 7x2x</td></tr>
+  <tr><td>Zen3</td><td>Ryzen 5xxx-6xxx, 7x3x</td></tr>
+  <tr><td>Zen4</td><td>Ryzen 7xxx-8xxx, 7x4x</td></tr>
+  <tr><td>Zen5</td><td>Ryzen 9xxx</td></tr>
+  <tr><td>Zen5c</td><td>咕咕咕？？？</td><td>大小核</td><td>咕咕咕？？？</td></tr>
+</table>
 
-|方案|电源计划|调度类型|
-|:-|:-|:-|
-|Zen1-5.bat|平衡|优先物理核心，默认休眠超线程|
-|Zen1-5.bat|高性能|全核全部分配|
-|Zen1-5.bat|卓越性能|全核全部分配|
-|Zen5c.bat|咕咕咕！！！|咕咕咕！！！|
-
+已修改电源计划：平衡 高性能 卓越性能<br/><br/>
 如果想要开启常用隐藏选项，可以导入仓库中的<a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSetting.reg">UnlockSetting.reg</a><br/>
 
 # 研究经验
@@ -48,6 +43,7 @@
 
 - <a href="https://blog.csdn.net/u011617151/article/details/140035903">https://blog.csdn.net/u011617151/article/details/140035903</a>
 - <a href="https://learn.microsoft.com/windows-hardware/customize/power-settings/configure-processor-power-management-options">https://learn.microsoft.com/windows-hardware/customize/power-settings/configure-processor-power-management-options</a>
+- <a href="https://nga.178.com/read.php?tid=38104750&rand=312">https://nga.178.com/read.php?tid=38104750&rand=312</a>
 - <a href="https://forums.guru3d.com/threads/smt-powerplan-settings.447431/">https://forums.guru3d.com/threads/smt-powerplan-settings.447431/</a>
 - <a href="https://www.overclockers.at/articles/the-hpet-bug-what-it-is-and-what-it-isnt/">https://www.overclockers.at/articles/the-hpet-bug-what-it-is-and-what-it-isnt</a>
 
