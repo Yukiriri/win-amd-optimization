@@ -16,7 +16,7 @@
   <tr><td>Zen5c</td><td>咕咕咕？？？</td><td>大小核</td><td>咕咕咕？？？</td></tr>
 </table>
 
-- 已修改电源计划：平衡 高性能 卓越性能
+- 已修改电源计划：平衡 高性能
 - 如果想修改SMT的休眠，可以使用 <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/SMT%20Hibernate%20On.bat">SMT Hibernate On.bat</a> <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/SMT%20Hibernate%20Off.bat">SMT Hibernate Off.bat</a>
 - 如果想解锁常用隐藏电源选项，可以导入 <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSettings.reg">UnlockSettings.reg</a>
 - 本预设开发所用环境是Windows11 23H2，你也应当安装最新或次新版Windows

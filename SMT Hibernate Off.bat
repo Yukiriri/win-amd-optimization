@@ -1,6 +1,6 @@
 @echo off & chcp 65001 >nul
 
-for %%i in (SCHEME_BALANCED SCHEME_MIN e9a42b02-d5df-448d-aa00-03f14749eb61) do (
+for %%i in (SCHEME_BALANCED SCHEME_MIN) do (
     powercfg -setacvalueindex %%i SUB_PROCESSOR CPMINCORES 100
 
     echo [%%i][处理器性能核心放置最小核心数量]=100%%
@@ -9,6 +9,6 @@ for %%i in (SCHEME_BALANCED SCHEME_MIN e9a42b02-d5df-448d-aa00-03f14749eb61) do 
     echo.
 )
 
-powercfg -S SCHEME_CURRENT
+powercfg -setactive SCHEME_CURRENT
 
 pause
