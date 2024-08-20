@@ -4,7 +4,7 @@
 
 </div>
 
-<!-- ![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true) -->
+![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true)
 
 <table>
   <tr>
