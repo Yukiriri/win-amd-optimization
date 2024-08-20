@@ -22,6 +22,5 @@ for %%i in (SCHEME_BALANCED SCHEME_MIN) do (
 )
 
 powercfg -setactive SCHEME_CURRENT
-@REM reg add HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power /v EventProcessorEnabled /t REG_DWORD /d 0 /f
 
 pause
