@@ -18,7 +18,7 @@
     <td>单CCD</td>
     <td>
       <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a><br/>
-      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT On.bat">P SMT On.bat（可选）</a><br/>
+      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT On.bat">P SMT On.bat</a>（可选）<br/>
     </td>
   </tr>
 
