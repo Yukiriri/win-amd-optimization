@@ -4,54 +4,17 @@
 
 </div>
 
-![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true)
+<!-- ![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true) -->
 
 <table>
   <tr>
-    <th>大小核类型</th>
-    <th>CCD结构</th>
-    <th>选择建议</th>
-  </tr>
-
-  <tr>
-    <td rowspan="2">全大核</td>
-    <td>单CCD</td>
-    <td>
-      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a><br/>
-      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT On.bat">P SMT On.bat</a>（可选）<br/>
-    </td>
-  </tr>
-
-  <tr>
-    <td>多CCD</td>
-    <td>
-      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a><br/>
-      <a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT Off.bat">P SMT Off.bat</a><br/>
-    </td>
-  </tr>
-
-  <tr>
-    <td>大小核</td>
-    <td>单CCD</td>
-    <td>
-      <del><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt.bat">P+E Opt.bat</a></del><br/>
-      咕咕咕！！！现在还不能用
-    </td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>文件</th>
+    <th>其他文件</th>
     <th>功能作用</th>
   </tr>
 
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a></td><td>全大核专用优化调度</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT Off.bat">P SMT Off.bat</a></td><td>全大核专用尽可能休眠超线程</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P SMT On.bat">P SMT On.bat</a></td><td>全大核专用重新启用超线程</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt.bat">P+E Opt.bat</a></td><td>大小核专用优化调度（开发中）</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E SMT Off.bat">P+E SMT Off.bat</a></td><td>大小核专用尽可能休眠超线程（开发中）</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E SMT On.bat">P+E SMT On.bat</a></td><td>大小核专用重新启用超线程（开发中）</td></tr>
+  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a></td><td>优化系统全大核调度</td></tr>
+  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Desk.bat">P+E Opt.bat</a></td><td>优化系统大小核调度（桌面端）（开发中）</td></tr>
+  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Desk.bat">P+E Opt.bat</a></td><td>优化系统大小核调度（移动端）（开发中）</td></tr>
   <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/RestoreDefault.bat">RestoreDefault.bat</a></td><td>恢复所有电源计划为默认（包括熄屏和睡眠时间）</td></tr>
   <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSettings.reg">UnlockSettings.reg</a></td><td>解锁常用隐藏电源选项（在控制面板里）</td></tr>
 </table>
@@ -62,15 +25,15 @@
 
 # 研究经验
 
-- 开启CPPC PC的好处和坏处：
-  - 好处：在中低负载时对多CCD的CPU可能有略微提升
-  - 坏处：
-    - 所有同一个CCX内的逻辑核心负载都会被定期强制搬到另一个逻辑核心，这毫无意义
-    - 金银核心会被尽可能撑满，高负载时适得其反
-
-- 关闭CPPC PC的好处和坏处：
-  - 好处：线程亲和性恢复正常
-  - 坏处：有的游戏的动态模糊会产生微妙的变化
+- 开和关CPPC PC的好处和坏处：
+  - 开启：
+    - 好处：在中低负载时对多CCD的CPU可能有略微提升
+    - 坏处：
+      - 所有同一个CCX内的逻辑核心负载都会被定期强制搬到另一个逻辑核心，这毫无意义
+      - 金银核心会被尽可能撑满，高负载时适得其反
+  - 关闭：
+    - 好处：线程亲和性恢复正常
+    - 坏处：有的游戏的动态模糊会产生微妙的变化
 
 - Win11 24H2变化：
   - 优化来得更明显
@@ -87,7 +50,3 @@
 # 无用的感慨
 
 AMD想用的舒服确实不适合小白和不爱折腾的人，我也许买Intel会更省心（前提不出12-14代的问题），虽然但是，我毕竟是有梦想组一台线程撕裂者巨型工作站的人，Intel在这方面没有平替，所以提前试水和折腾AMD是必经之路，早打基础早为以后铺路
-
-# 大胆的想法
-
-想找出Windows实现调度所在的DLL，并重写更优调度，从根源上优化
