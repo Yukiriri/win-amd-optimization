@@ -12,7 +12,7 @@ using std::string;
 #define _TH_API_STYLE 0
 
 
-auto GetPhysicalPCoreList()
+auto GetPhysicalPCoreList(bool isDebug = false)
 {
     ULONG scsi_size = 0;
     GetSystemCpuSetInformation(nullptr, 0, &scsi_size, nullptr, 0);
@@ -40,15 +40,18 @@ auto GetPhysicalPCoreList()
 #endif
         }
 
-        std::string_view perfDesc[]{ "未识别", "未识别", "未识别" };
-        switch (PCoreIndex)
+        if (isDebug)
         {
-        case 2: perfDesc[PCoreIndex - 2] = "低功耗能效核";
-        case 1: perfDesc[PCoreIndex - 1] = "能效核";
-        case 0: perfDesc[PCoreIndex - 0] = "性能核";
+            std::string_view perfDesc[]{ "未识别", "未识别", "未识别" };
+            switch (PCoreIndex)
+            {
+                case 2: perfDesc[PCoreIndex - 2] = "LPE核";
+                case 1: perfDesc[PCoreIndex - 1] = "E核";
+                case 0: perfDesc[PCoreIndex - 0] = "P核";
+            }
+            cout << std::format("Group:{} ID:{:<3} 物理核心:{:<2} 逻辑核心:{:<2} 异构类型:{:<5} SchedulingClass:{}\n", 
+                scsi_cs.Group, scsi_cs.Id, scsi_cs.CoreIndex, scsi_cs.LogicalProcessorIndex, perfDesc[scsi_cs.EfficiencyClass], scsi_cs.SchedulingClass);
         }
-        cout << std::format("Group:{} ID:{:<3} 物理核心:{:<2} 逻辑核心:{:<2} 异构类型:{:<12} SchedulingClass:{}\n", 
-            scsi_cs.Group, scsi_cs.Id, scsi_cs.CoreIndex, scsi_cs.LogicalProcessorIndex, perfDesc[scsi_cs.EfficiencyClass], scsi_cs.SchedulingClass);
     }
 
     delete[] scsi_arr;
@@ -78,34 +81,6 @@ auto IsGameProcess(HWND hwnd)
     return false;
 }
 
-auto SetGameMode(DWORD pid, const std::vector<ULONG>& coreList, bool isGame)
-{
-    auto hproc = OpenProcess(PROCESS_SET_INFORMATION | PROCESS_QUERY_INFORMATION, false, pid);
-    if (hproc)
-    {
-#if _TH_API_STYLE > 0
-        SetProcessDefaultCpuSets(hproc, coreList.data(), coreList.size());
-#else
-        DWORD_PTR mask = 0;
-        if (isGame)
-        {
-            for (auto& core : coreList)
-            {
-                mask |= (0b01UL << core);
-            }
-        }
-        else
-        {
-            DWORD_PTR tMask;
-            GetProcessAffinityMask(GetCurrentProcess(), &tMask, &mask);
-        }
-        SetProcessAffinityMask(hproc, mask);
-#endif
-        SetPriorityClass(hproc, isGame ? HIGH_PRIORITY_CLASS : NORMAL_PRIORITY_CLASS);
-        CloseHandle(hproc);
-    }
-}
-
 auto GetPIDExeName(DWORD pid)
 {
     std::wstring exeName;
@@ -129,20 +104,56 @@ auto GetPIDExeName(DWORD pid)
     return exeName;
 }
 
+auto SetGameMode(HWND hwnd, bool isGame)
+{
+    static auto coreList = GetPhysicalPCoreList();
+
+    DWORD pid = 0; GetWindowThreadProcessId(hwnd, &pid);
+    auto hproc = OpenProcess(PROCESS_SET_INFORMATION | PROCESS_QUERY_INFORMATION, false, pid);
+    if (hproc)
+    {
+#if _TH_API_STYLE > 0
+        SetProcessDefaultCpuSets(hproc, coreList.data(), coreList.size());
+#else
+        DWORD_PTR mask = 0;
+        if (isGame)
+        {
+            for (auto& core : coreList)
+            {
+                mask |= (0b01UL << core);
+            }
+        }
+        else
+        {
+            DWORD_PTR tMask;
+            GetProcessAffinityMask(GetCurrentProcess(), &tMask, &mask);
+        }
+        SetProcessAffinityMask(hproc, mask);
+#endif
+        SetPriorityClass(hproc, isGame ? HIGH_PRIORITY_CLASS : NORMAL_PRIORITY_CLASS);
+        CloseHandle(hproc);
+        
+        WCHAR wndTitle[30]{};
+        GetWindowTextW(hwnd, wndTitle, sizeof(wndTitle) / sizeof(WCHAR));
+        wcout << std::format(L"GameMode:{:<5} [PID:{:<5}] [{}] [{}]\n", isGame, pid, GetPIDExeName(pid), wndTitle);
+    }
+}
+
 int main()
 {
     setlocale(LC_ALL, "chs.utf8");
 
-    auto corelist = GetPhysicalPCoreList();
+    auto corelist = GetPhysicalPCoreList(true);
     for (int i = 0; i < 50; i++) cout << "="; cout << "\n";
 #if _TH_API_STYLE > 0
-    cout << "已选物理性能核心ID: ";
+    cout << std::format("已选{}个物理P核ID: ", corelist.size());
 #else
-    cout << "已选物理性能核心: ";
+    cout << std::format("已选{}个物理P核: ", corelist.size());
 #endif
     for (auto& cid : corelist) cout << std::format("{:<2} ", cid); cout << "\n";
     for (int i = 0; i < 50; i++) cout << "="; cout << "\n";
 
+    std::map<HWND, bool> lastGamemode;
     for (;;Sleep(500))
     {
         if (_kbhit())
@@ -150,27 +161,29 @@ int main()
             switch (_getch())
             {
                 case 'h': ShowWindow(GetConsoleWindow(), SW_HIDE); break;
-                case 'q': return 0;
+                case 'q':
+                {
+                    for (auto& it : lastGamemode)
+                    {
+                        if (it.second)
+                            SetGameMode(it.first, false);
+                    }
+                }
+                return 0;
             }
         }
 
         auto hwnd = GetForegroundWindow();
-        if (hwnd == nullptr)
+        if (!hwnd)
             continue;
         
-        static std::map<DWORD, bool> lastGamemode;
-        DWORD pid = 0; GetWindowThreadProcessId(hwnd, &pid);
-        if (!lastGamemode[pid])
+        if (!lastGamemode[hwnd])
         {
             auto isGame = IsGameProcess(hwnd);
             if (isGame)
             {
-                lastGamemode[pid] = isGame;
-                SetGameMode(pid, corelist, isGame);
-
-                WCHAR wndTitle[50]{};
-                GetWindowTextW(hwnd, wndTitle, sizeof(wndTitle) / 2);
-                wcout << std::format(L"SetGameMode:{:<5} pid={:<5} [{}] [{}]\n", isGame, pid, GetPIDExeName(pid), wndTitle);
+                lastGamemode[hwnd] = isGame;
+                SetGameMode(hwnd, isGame);
             }
         }
     }

@@ -18,6 +18,7 @@ public:
     PerformanceMonitor()
     {
         #define _PM_DLLIMP(hdll, apiName) _dll_##apiName = (decltype(_dll_##apiName))GetProcAddress(hdll, #apiName)
+        #define _PM_ASSERT(exp) if (!(exp)) return -1
         _PM_DLLIMP(_hpdhdll, PdhOpenQueryA);
         _PM_DLLIMP(_hpdhdll, PdhCloseQuery);
         _PM_DLLIMP(_hpdhdll, PdhAddCounterA);
@@ -48,13 +49,13 @@ public:
         return TRUE;
     }
 
-    auto GetCPUUsage(std::string_view processorID)
+    double GetCPUUsage(std::string_view processorID)
     {
         auto counterName = std::format("\\Processor({})\\% Processor Time", processorID);
         auto hcounter = GetCounter(counterName);
 
         PDH_FMT_COUNTERVALUE counterValue;
-        if (_dll_PdhGetFormattedCounterValue(hcounter, PDH_FMT_DOUBLE, nullptr, &counterValue) != ERROR_SUCCESS) return -1.0;
+        _PM_ASSERT(_dll_PdhGetFormattedCounterValue(hcounter, PDH_FMT_DOUBLE, nullptr, &counterValue) == ERROR_SUCCESS);
 
         return counterValue.doubleValue;
     }
@@ -69,15 +70,15 @@ public:
         return GetCPUUsage("_Total");
     }
 
-    auto GetGPUUsage(DWORD pid, std::string_view unitName)
+    double GetGPUUsage(DWORD pid, std::string_view unitName)
     {
         auto counterName = std::format("\\GPU Engine(*)\\Utilization Percentage", pid);
         auto hcounter = GetCounter(counterName);
 
         DWORD arr_size = 0, arr_count;
-        if (_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_DOUBLE, &arr_size, &arr_count, nullptr) != PDH_MORE_DATA) return -1.0;
+        _PM_ASSERT(_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_DOUBLE, &arr_size, &arr_count, nullptr) == PDH_MORE_DATA);
         auto items = (PDH_FMT_COUNTERVALUE_ITEM_A*)new uint8_t[arr_size]{};
-        if (_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_DOUBLE, &arr_size, &arr_count, items) != ERROR_SUCCESS) return -1.0;
+        _PM_ASSERT(_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_DOUBLE, &arr_size, &arr_count, items) == ERROR_SUCCESS);
         auto usage = 0.0;
         for (int i = 0; i < arr_count; i++)
         {
@@ -95,7 +96,7 @@ public:
 
     auto GetGPUUsage(DWORD pid)
     {
-        return GetGPUUsage(pid, "engtype_3D");
+        return std::max(GetGPUUsage(pid, "engtype_3D"), GetGPUUsage(pid, "engtype_Graphics_"));
     }
 
     auto GetAllGPUUsage(std::string_view unitName)
@@ -105,18 +106,18 @@ public:
 
     auto GetAllGPUUsage()
     {
-        return GetAllGPUUsage("engtype_3D");
+        return std::max(GetAllGPUUsage("engtype_3D"), GetAllGPUUsage("engtype_Graphics_"));
     }
 
-    auto GetGPUMemUsage(DWORD pid, std::string_view unitName)
+    int64_t GetGPUMemUsage(DWORD pid, std::string_view unitName)
     {
         auto counterName = std::format("\\GPU Process Memory(*)\\{}", unitName);
         auto hcounter = GetCounter(counterName);
 
         DWORD arr_size = 0, arr_count;
-        if (_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_LARGE, &arr_size, &arr_count, nullptr) != PDH_MORE_DATA) return -1LL;
+        _PM_ASSERT(_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_LARGE, &arr_size, &arr_count, nullptr) == PDH_MORE_DATA);
         auto items = (PDH_FMT_COUNTERVALUE_ITEM_A*)new uint8_t[arr_size]{};
-        if (_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_LARGE, &arr_size, &arr_count, items) != ERROR_SUCCESS) return -1LL;
+        _PM_ASSERT(_dll_PdhGetFormattedCounterArrayA(hcounter, PDH_FMT_LARGE, &arr_size, &arr_count, items) == ERROR_SUCCESS);
         auto usage = 0LL;
         for (int i = 0; i < arr_count; i++)
         {
@@ -132,7 +133,7 @@ public:
 
     auto GetGPUMemUsage(DWORD pid)
     {
-        return GetGPUMemUsage(pid, "Dedicated Usage");
+        return GetGPUMemUsage(pid, "Local Usage");
     }
 
     auto GetAllGPUMemUsage(std::string_view unitName)
@@ -142,7 +143,7 @@ public:
 
     auto GetAllGPUMemUsage()
     {
-        return GetAllGPUMemUsage("Dedicated Usage");
+        return GetAllGPUMemUsage("Local Usage");
     }
 
     HCOUNTER GetCounter(std::string_view counterName)
