@@ -7,6 +7,7 @@
 提供了 修改系统调度 和 后台辅助程序 这2种方式帮助游戏运行得更好<br/>
 两者互不冲突，可以都用也可以只用其中一个，随你需要<br/>
 后台辅助程序会对前台程序进行规则判断来识别是不是游戏进程，如果是游戏进程，就提高进程优先级，并把进程的CPU分配绑定在所有物理性能核<br/>
+注意，如果要用后台辅助程序，不能在开启CPPC PC的情况下修改SMT为循环配置<br/>
 
 ![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true)
 
@@ -66,8 +67,6 @@
 
 - <a href="https://blog.csdn.net/u011617151/article/details/140035903">https://blog.csdn.net/u011617151/article/details/140035903</a>
 - <a href="https://learn.microsoft.com/windows-hardware/customize/power-settings/configure-processor-power-management-options">https://learn.microsoft.com/windows-hardware/customize/power-settings/configure-processor-power-management-options</a>
-- <a href="https://nga.178.com/read.php?tid=38104750&rand=312">https://nga.178.com/read.php?tid=38104750&rand=312</a>
-- <a href="https://forums.guru3d.com/threads/smt-powerplan-settings.447431/">https://forums.guru3d.com/threads/smt-powerplan-settings.447431/</a>
 - <a href="https://www.overclockers.at/articles/the-hpet-bug-what-it-is-and-what-it-isnt/">https://www.overclockers.at/articles/the-hpet-bug-what-it-is-and-what-it-isnt</a>
 
 # 无用的感慨
