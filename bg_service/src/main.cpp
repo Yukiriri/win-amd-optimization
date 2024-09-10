@@ -46,7 +46,7 @@ auto GetPhysicalPCoreList()
         case 1: perfDesc[PCoreIndex - 1] = "能效核";
         case 0: perfDesc[PCoreIndex - 0] = "性能核";
         }
-        cout << std::format("Group:{} ID:{:<3} 物理核心:{:<2} 逻辑核心:{:<2} 异构类型:{:<4} SchedulingClass:{}\n", 
+        cout << std::format("Group:{} ID:{:<3} 物理核心:{:<2} 逻辑核心:{:<2} 异构类型:{:<12} SchedulingClass:{}\n", 
             scsi_cs.Group, scsi_cs.Id, scsi_cs.CoreIndex, scsi_cs.LogicalProcessorIndex, perfDesc[scsi_cs.EfficiencyClass], scsi_cs.SchedulingClass);
     }
 
