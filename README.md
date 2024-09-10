@@ -4,11 +4,11 @@
 
 </div>
 
-<!-- ![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true) -->
+![](https://github.com/Yukiriri/win-amd-optimization/blob/main/res/effect_draw_table.png?raw=true)
 
 <table>
   <tr>
-    <th>其他文件</th>
+    <th>自选文件</th>
     <th>功能作用</th>
   </tr>
 
@@ -23,13 +23,26 @@
 - 环境基准：Windows11 23H2 或更高
 - 以防万一，建议以管理员身份运行bat
 
+# 构建
+
+  - mingw64
+    ```
+    git clone https://github.com/Yukiriri/win-amd-optimization.git
+    cd win-amd-optimization
+    cd bg_service
+    build
+    ```
+  - Visual Studio
+
+    自己建sln项目（）
+
 # 研究经验
 
 - 开和关CPPC PC的好处和坏处：
   - 开启：
     - 好处：在中低负载时对多CCD的CPU可能有略微提升
     - 坏处：
-      - 所有同一个CCX内的逻辑核心负载都会被定期强制搬到另一个逻辑核心，这毫无意义
+      - 同一个CCX内的2个逻辑核心负载会被定期强制互相调换，这毫无意义
       - 金银核心会被尽可能撑满，高负载时适得其反
   - 关闭：
     - 好处：线程亲和性恢复正常
