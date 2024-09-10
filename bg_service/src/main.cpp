@@ -1,6 +1,7 @@
 
 #include <bits/stdc++.h>
 #include <windows.h>
+#include <tlhelp32.h>
 #include <conio.h>
 #include "PerformanceMonitor.hpp"
 using std::cout;
@@ -105,6 +106,29 @@ auto SetGameMode(DWORD pid, const std::vector<ULONG>& coreList, bool isGame)
     }
 }
 
+auto GetPIDExeName(DWORD pid)
+{
+    std::wstring exeName;
+    auto hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hsnap != INVALID_HANDLE_VALUE)
+    {
+        PROCESSENTRY32W pe32{ sizeof(pe32) };
+        if (Process32FirstW(hsnap, &pe32))
+        {
+            do
+            {
+                if (pe32.th32ProcessID == pid)
+                {
+                    exeName = pe32.szExeFile;
+                    break;
+                }
+            } while (Process32NextW(hsnap, &pe32));
+        }
+        CloseHandle(hsnap);
+    }
+    return exeName;
+}
+
 int main()
 {
     setlocale(LC_ALL, "chs.utf8");
@@ -146,7 +170,7 @@ int main()
 
                 WCHAR wndTitle[50]{};
                 GetWindowTextW(hwnd, wndTitle, sizeof(wndTitle) / 2);
-                wcout << std::format(L"SetGameMode:{:<5} pid={:<5} [{}]\n", isGame, pid, wndTitle);
+                wcout << std::format(L"SetGameMode:{:<5} pid={:<5} [{}] [{}]\n", isGame, pid, GetPIDExeName(pid), wndTitle);
             }
         }
     }
