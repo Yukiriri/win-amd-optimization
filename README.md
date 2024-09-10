@@ -13,8 +13,8 @@
   </tr>
 
   <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P Opt.bat">P Opt.bat</a></td><td>优化系统全大核调度</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Desk.bat">P+E Opt.bat</a></td><td>优化系统大小核调度（桌面端）（开发中）</td></tr>
-  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Desk.bat">P+E Opt.bat</a></td><td>优化系统大小核调度（移动端）（开发中）</td></tr>
+  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Desk.bat">P+E Opt Desk.bat</a></td><td>优化系统大小核调度（桌面端）（开发中）</td></tr>
+  <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/P+E Opt Mob.bat">P+E Opt Mob.bat</a></td><td>优化系统大小核调度（移动端）（开发中）</td></tr>
   <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/RestoreDefault.bat">RestoreDefault.bat</a></td><td>恢复所有电源计划为默认（包括熄屏和睡眠时间）</td></tr>
   <tr><td><a href="https://github.com/Yukiriri/win-amd-optimization/blob/main/UnlockSettings.reg">UnlockSettings.reg</a></td><td>解锁常用隐藏电源选项（在控制面板里）</td></tr>
 </table>
